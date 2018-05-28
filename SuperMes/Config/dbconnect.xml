@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<dbconn dbtype="sqlserver" dbserver="127.0.0.1">
+	<database name="sqlserver">
+			<manager database="manager" userid="manager" password="manager" />
+			<application database="store" userid="store" password="store" />
+	</database>
+	<database name="oracle">
+		<manager database="manager" userid="manager" password="manager" />
+		<application database="store" userid="store" password="store" />
+	</database>		
+</dbconn>
