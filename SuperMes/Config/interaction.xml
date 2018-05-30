@@ -1,4 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
-<interactions tcpport="8086" httpport="8080">
-  <interaction name="登录人员" interface="IPersonLogin" impl="Service.Interaction.Impl.PersonLoginImpl"/> 
+<interactions tcpport="8086" httpport="8889">
+  <interaction name="登录人员" interface="IPersonLogin" impl="SuperMes.RemoteObject.InterfaceImplement.PersonLogin"/>
+  <interaction name="客户端信息" interface="IClientInfo" impl="SuperMes.RemoteObject.InterfaceImplement.ClientInfo"/>
 </interactions>

@@ -29,10 +29,10 @@ namespace SuperMes
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            OnStart();
+            OnStart(sender);
         }
 
-        protected void OnStart()
+        protected void OnStart(object sender)
         {
             try
             {
@@ -79,6 +79,7 @@ namespace SuperMes
                                         {
                                             RemotingConfiguration.RegisterWellKnownServiceType(temp, implInterface, WellKnownObjectMode.SingleCall);
                                             log.writeLog(this.GetType().Name, "注册服务" + temp.Name + "成功");
+                                           
                                             break;
                                         }
                                     }
@@ -95,12 +96,13 @@ namespace SuperMes
                     }
 
                 }
-
+              
             }
             catch (Exception exception)
             {
                 log.writeLog(this.GetType().Name, "加载对象出错!" + exception.ToString());
             }
+            (sender as Control).Enabled = false;
         }
 
         /// <summary>

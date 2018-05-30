@@ -1,7 +1,7 @@
 using System;
 using System.Xml;
 
-namespace SuperMesServer.DataBase.ConnectDB
+namespace SuperMes.Utils.DataBase.ConnectDB
 {
 	/// <summary>
 	/// ConnectDB 的摘要说明。

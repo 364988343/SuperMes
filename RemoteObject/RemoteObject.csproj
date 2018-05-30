@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\SuperMes\bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -40,11 +40,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\PersonLoginBll.cs" />
     <Compile Include="InterfaceImplement\ClientInfo.cs" />
+    <Compile Include="InterfaceImplement\PersonLogin.cs" />
     <Compile Include="Interface\IClientInfo.cs" />
+    <Compile Include="Interface\IPersonLogin.cs" />
     <Compile Include="Model\ClientInfoModel.cs" />
+    <Compile Include="Model\LoginPerson.cs">
+      <DependentUpon>LoginPerson.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Model\LoginPerson.Designer.cs">
+      <DependentUpon>LoginPerson.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\Service\Service.csproj">
+      <Project>{02569DE8-D090-480E-AFFB-4C183892ED46}</Project>
+      <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperMes.Utils\SuperMes.Utils.csproj">
+      <Project>{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}</Project>
+      <Name>SuperMes.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuperMes\SuperMesServer.csproj">
+      <Project>{0037FD37-BFDA-4808-8AB1-67AA4BBA2307}</Project>
+      <Name>SuperMesServer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\LoginPerson.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>LoginPerson.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Model\LoginPerson.xsc">
+      <DependentUpon>LoginPerson.xsd</DependentUpon>
+    </None>
+    <None Include="Model\LoginPerson.xss">
+      <DependentUpon>LoginPerson.xsd</DependentUpon>
+    </None>
+    <None Include="Model\LoginPerson.xsx">
+      <DependentUpon>LoginPerson.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

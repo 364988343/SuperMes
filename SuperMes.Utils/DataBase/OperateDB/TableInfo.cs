@@ -1,6 +1,6 @@
 using System;
 
-namespace SuperMesServer.DataBase.OperateDB
+namespace SuperMes.Utils.DataBase.OperateDB
 {
 	/// <summary>
 	/// TableInfo 的摘要说明。

@@ -53,20 +53,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\ConnectDB\ConnectDB.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\ConnectDB\ConnectDBFactory.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\ConnectDB\ConnectOracle.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\ConnectDB\ConnectSqlServer.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\ConnectDB\IConnectDB.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\OperateDB\AppOperate.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\OperateDB\ManagerOperate.cs" />
-    <Compile Include="SuperMes.Utils\DataBase\OperateDB\TableInfo.cs" />
-    <Compile Include="SuperMes.Utils\Log\AppLog.cs" />
-    <Compile Include="SuperMes.Utils\Log\AppLogDB.cs" />
-    <Compile Include="SuperMes.Utils\Log\AppLogFactory.cs" />
-    <Compile Include="SuperMes.Utils\Log\AppLogFile.cs" />
-    <Compile Include="SuperMes.Utils\Log\IAppLog.cs" />
-    <Compile Include="SuperMes.Utils\Xml\ReadXml.cs" />
     <EmbeddedResource Include="frmSuperMesServerMain.resx">
       <DependentUpon>frmSuperMesServerMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,11 +79,22 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="Config\applog.xml" />
-    <Content Include="Config\dbconnect.xml" />
-    <Content Include="Config\interaction.xml" />
+    <ProjectReference Include="..\SuperMes.Utils\SuperMes.Utils.csproj">
+      <Project>{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}</Project>
+      <Name>SuperMes.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Config\applog.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\dbconnect.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\interaction.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

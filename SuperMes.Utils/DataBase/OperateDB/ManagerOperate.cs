@@ -1,27 +1,27 @@
 using System;
 using System.Data;
 using System.Text;
-using SuperMesServer.DataBase.ConnectDB;
+using SuperMes.Utils.DataBase.ConnectDB;
 using SuperMesServer.Log;
 
 
 
-namespace SuperMesServer.DataBase.OperateDB
+namespace SuperMes.Utils.DataBase.OperateDB
 {
 	/// <summary>
 	/// DataSetDeal 的摘要说明。
 	/// </summary>
-	public class AppOperate
+	public class ManagerOperate
 	{
-		public AppOperate()
+		public ManagerOperate()
 		{
 			//
 			// TODO: 在此处添加构造函数逻辑
 			//
 		}
 
-		private static AppOperate instance= new AppOperate();
-		public  static AppOperate getInstance()
+		private static ManagerOperate instance= new ManagerOperate();
+		public  static ManagerOperate getInstance()
 		{
 			return instance;
 		}
@@ -38,13 +38,14 @@ namespace SuperMesServer.DataBase.OperateDB
 		/// </summary>
 		/// <param name="ds"></param>
 		/// <returns></returns>
-		public DataSet SelectByCondition(String table,string where)
+		public DataSet SelectByCondition(string table,string field,string where)
 		{
 			DataSet ds = new DataSet();
+			string query = "select " +field +" from  " + table + " where " +where;
 			try
 			{
-				string querySql = table +where ;
-				System.Data.OleDb.OleDbDataAdapter adapter = new System.Data.OleDb.OleDbDataAdapter(querySql,managerDB.OpenApp());						
+				
+				System.Data.OleDb.OleDbDataAdapter adapter = new System.Data.OleDb.OleDbDataAdapter(query,managerDB.OpenManager());						
 			
 				adapter.Fill(ds,table);
 			}
@@ -62,7 +63,7 @@ namespace SuperMesServer.DataBase.OperateDB
 			System.Data.OleDb.OleDbDataReader dr=null;
 			try
 			{
-				System.Data.OleDb.OleDbCommand  command= new System.Data.OleDb.OleDbCommand(procedureName,managerDB.OpenApp());
+				System.Data.OleDb.OleDbCommand  command= new System.Data.OleDb.OleDbCommand(procedureName,managerDB.OpenManager());
 　　　　　　command.CommandType = System.Data.CommandType.StoredProcedure;
 				for(int i=0;i< sqlParameter.Length;i++)
 				{
@@ -84,7 +85,7 @@ namespace SuperMesServer.DataBase.OperateDB
 			object dr = null;
 			try
 			{
-				System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(sql,managerDB.OpenApp());
+				System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(sql,managerDB.OpenManager());
 　　　　　　	dr = command.ExecuteScalar();
 			}
 			catch(Exception exception)
@@ -101,7 +102,7 @@ namespace SuperMesServer.DataBase.OperateDB
 		{
 			try
 			{
-				System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(sqlUpdate,managerDB.OpenApp());
+				System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(sqlUpdate,managerDB.OpenManager());
 　　　　　　    command.CommandType = System.Data.CommandType.Text;
 				command.ExecuteNonQuery();
 			}
@@ -117,7 +118,7 @@ namespace SuperMesServer.DataBase.OperateDB
 		{
 			try
 			{
-				System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(procedureName,managerDB.OpenApp());
+				System.Data.OleDb.OleDbCommand command = new System.Data.OleDb.OleDbCommand(procedureName,managerDB.OpenManager());
 　　　　　　command.CommandType = System.Data.CommandType.StoredProcedure;
 				for(int i=0;i< sqlParameter.Length;i++)
 				{

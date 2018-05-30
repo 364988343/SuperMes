@@ -1,6 +1,6 @@
 using System;
 
-namespace SuperMesServer.DataBase.ConnectDB
+namespace SuperMes.Utils.DataBase.ConnectDB
 {
 	/// <summary>
 	/// ConnectDBFactory 的摘要说明。

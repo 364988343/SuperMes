@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "..\Client\Client.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemoteObject", "RemoteObject\RemoteObject.csproj", "{6980622F-79C1-445A-8EC9-94DF22AB48DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperMes.Utils", "SuperMes.Utils\SuperMes.Utils.csproj", "{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{6980622F-79C1-445A-8EC9-94DF22AB48DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6980622F-79C1-445A-8EC9-94DF22AB48DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6980622F-79C1-445A-8EC9-94DF22AB48DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FB38A67-9D66-4B51-A8BE-3ECA7A59874D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

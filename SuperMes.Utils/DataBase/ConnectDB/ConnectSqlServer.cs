@@ -1,13 +1,13 @@
 using System;
 using SuperMesServer.Log;
-namespace SuperMesServer.DataBase.ConnectDB
+namespace SuperMes.Utils.DataBase.ConnectDB
 {
 	/// <summary>
-	/// ConnectOracle 的摘要说明。
+	/// ConnectSqlServer 的摘要说明。
 	/// </summary>
-	public class ConnectOracle:ConnectDB
+	public class ConnectSqlServer:ConnectDB
 	{
-		public ConnectOracle()
+		public ConnectSqlServer()
 		{
 			//
 			// TODO: 在此处添加构造函数逻辑
@@ -18,8 +18,8 @@ namespace SuperMesServer.DataBase.ConnectDB
 		/// </summary>
 		private System.Data.OleDb.OleDbConnection connect ;        
 
-		private static ConnectOracle connectDB = new ConnectOracle();
-		public static ConnectOracle getAppInstance()
+		private static ConnectSqlServer connectDB = new ConnectSqlServer();
+		public static ConnectSqlServer getAppInstance()
 		{
 			return connectDB;
 		}
@@ -29,12 +29,14 @@ namespace SuperMesServer.DataBase.ConnectDB
 		/// </summary>
 		override public System.Data.OleDb.OleDbConnection OpenManager()
 		{
-			string connectStr= null;
+			string connectStr = null;
 			try
 			{
 				if(connect==null)
 				{
-					connectStr = "Provider=MSDAORA;User ID="+this.OracleManagerUserID+";Data Source="+this.OracleManagerDB+";Password="+this.OracleManagerPassword;
+					connectStr = "Provider=SQLOLEDB.1;Persist Security Info=True;";
+					connectStr += "Data Source="+this.DbServer+"; Initial Catalog=" + this.ServerManagerDB;
+                    connectStr += ";User ID="+this.ServerManagerUserID +"; Password=" + this.ServerManagerPassword;
 					connect = new System.Data.OleDb.OleDbConnection(connectStr);
 					connect.Open();
 				}
@@ -52,12 +54,14 @@ namespace SuperMesServer.DataBase.ConnectDB
 		/// </summary>
 		override public System.Data.OleDb.OleDbConnection OpenApp()
 		{
-			string connectStr=null;
+			string connectStr =null;
 			try
 			{
 				if(connect==null)
 				{
-					connectStr = "Provider=MSDAORA;User ID="+this.ServerApplicationUserID+";Data Source="+this.ServerApplicationDB+";Password="+this.ServerApplicationPassword;
+					connectStr = "Provider=SQLOLEDB.1;Persist Security Info=True;";
+					connectStr += "Data Source="+this.DbServer+"; Initial Catalog=" + this.ServerApplicationDB;
+					connectStr += ";User ID="+this.ServerApplicationUserID +"; Password=" + this.ServerApplicationPassword;
 					connect = new System.Data.OleDb.OleDbConnection(connectStr);
 					connect.Open();
 				}

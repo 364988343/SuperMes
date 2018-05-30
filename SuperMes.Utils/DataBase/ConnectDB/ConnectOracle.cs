@@ -1,13 +1,13 @@
 using System;
 using SuperMesServer.Log;
-namespace SuperMesServer.DataBase.ConnectDB
+namespace SuperMes.Utils.DataBase.ConnectDB
 {
 	/// <summary>
-	/// ConnectSqlServer 的摘要说明。
+	/// ConnectOracle 的摘要说明。
 	/// </summary>
-	public class ConnectSqlServer:ConnectDB
+	public class ConnectOracle:ConnectDB
 	{
-		public ConnectSqlServer()
+		public ConnectOracle()
 		{
 			//
 			// TODO: 在此处添加构造函数逻辑
@@ -18,8 +18,8 @@ namespace SuperMesServer.DataBase.ConnectDB
 		/// </summary>
 		private System.Data.OleDb.OleDbConnection connect ;        
 
-		private static ConnectSqlServer connectDB = new ConnectSqlServer();
-		public static ConnectSqlServer getAppInstance()
+		private static ConnectOracle connectDB = new ConnectOracle();
+		public static ConnectOracle getAppInstance()
 		{
 			return connectDB;
 		}
@@ -29,14 +29,12 @@ namespace SuperMesServer.DataBase.ConnectDB
 		/// </summary>
 		override public System.Data.OleDb.OleDbConnection OpenManager()
 		{
-			string connectStr = null;
+			string connectStr= null;
 			try
 			{
 				if(connect==null)
 				{
-					connectStr = "Provider=SQLOLEDB.1;Persist Security Info=True;";
-					connectStr += "Data Source="+this.DbServer+"; Initial Catalog=" + this.ServerManagerDB;
-                    connectStr += ";User ID="+this.ServerManagerUserID +"; Password=" + this.ServerManagerPassword;
+					connectStr = "Provider=MSDAORA;User ID="+this.OracleManagerUserID+";Data Source="+this.OracleManagerDB+";Password="+this.OracleManagerPassword;
 					connect = new System.Data.OleDb.OleDbConnection(connectStr);
 					connect.Open();
 				}
@@ -54,14 +52,12 @@ namespace SuperMesServer.DataBase.ConnectDB
 		/// </summary>
 		override public System.Data.OleDb.OleDbConnection OpenApp()
 		{
-			string connectStr =null;
+			string connectStr=null;
 			try
 			{
 				if(connect==null)
 				{
-					connectStr = "Provider=SQLOLEDB.1;Persist Security Info=True;";
-					connectStr += "Data Source="+this.DbServer+"; Initial Catalog=" + this.ServerApplicationDB;
-					connectStr += ";User ID="+this.ServerApplicationUserID +"; Password=" + this.ServerApplicationPassword;
+					connectStr = "Provider=MSDAORA;User ID="+this.ServerApplicationUserID+";Data Source="+this.ServerApplicationDB+";Password="+this.ServerApplicationPassword;
 					connect = new System.Data.OleDb.OleDbConnection(connectStr);
 					connect.Open();
 				}
